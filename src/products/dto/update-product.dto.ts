@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsEmpty, IsIn, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import { IsEmpty, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from 'class-validator';
 
 // DTO para PUT /products/:id.
 // PUT = reemplazo completo del producto (menos _id y status).
@@ -12,8 +12,8 @@ export class UpdateProductDto {
   @IsNotEmpty({ message: 'name es obligatorio' })
   name: string;
 
-  @Type(() => File)
-  @IsEmpty({ message: 'image no es obligatorio' })
+  @Type(() => File )
+  @IsOptional({ message: 'image no es obligatorio' })
   image: File;
 
   @IsString({ message: 'type debe ser un texto' })
@@ -30,6 +30,6 @@ export class UpdateProductDto {
   price: number;
 
   @IsString({ message: 'supplier debe ser un texto' })
-  @IsEmpty({ message: 'supplier es obligatorio' })
+  @IsOptional({ message: 'supplier no es obligatorio' })
   supplier: string;
 }
