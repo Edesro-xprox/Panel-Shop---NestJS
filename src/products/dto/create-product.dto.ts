@@ -10,7 +10,7 @@ export class CreateProductDto {
   name: string;
 
   @Type(() => File)
-  @IsEmpty({ message: 'image no es obligatorio' })
+  @IsOptional({ message: 'image no es obligatorio' })
   image: File;
 
   @IsString({ message: 'description debe ser un texto' })
@@ -23,7 +23,7 @@ export class CreateProductDto {
   price: number;
 
   @IsString({ message: 'supplier debe ser un texto' })
-  @IsEmpty({ message: 'supplier es obligatorio' })
+  @IsOptional({ message: 'supplier es obligatorio' })
   supplier: string;
 
   @IsString({ message: 'type debe ser un texto' })
