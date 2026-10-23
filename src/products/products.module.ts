@@ -2,8 +2,7 @@ import { Module } from '@nestjs/common';
 import { ProductsController } from './products.controller.js';
 import { ProductsService } from './products.service.js';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Product } from './entities/product.entity.js';
-import { ProductSchema } from './schemas/product.schema.js';
+import { Product, ProductSchema } from './schemas/product.schema.js';
 
 // Un Módulo agrupa todo lo de un recurso: controlador + servicio.
 // Para agregar otro recurso (ej: suppliers), creas otra carpeta igual
@@ -12,7 +11,7 @@ import { ProductSchema } from './schemas/product.schema.js';
   imports: [ 
     MongooseModule.forFeature([
       {
-        name: Product.name,
+        name: Product.name, //Sirve para registrar el modelo de Mongoose con un nombre que luego para inyectarlo en tus servicios y controladores
         schema: ProductSchema,
       },
     ]),
